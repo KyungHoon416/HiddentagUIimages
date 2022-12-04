@@ -22,6 +22,8 @@
 		4FF18E3D293C5BC40065E5B4 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4FF18E31293C5B850065E5B4 /* Roboto-LightItalic.ttf */; };
 		4FF18E3E293C5BC40065E5B4 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4FF18E29293C5B850065E5B4 /* Roboto-Medium.ttf */; };
 		4FF18E3F293C5BC40065E5B4 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4FF18E2A293C5B850065E5B4 /* Roboto-Light.ttf */; };
+		4FF18E43293C5F9D0065E5B4 /* HIDDENPhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF18E41293C5F9D0065E5B4 /* HIDDENPhotoViewCell.m */; };
+		4FF18E44293C5F9D0065E5B4 /* HIDDENPhotoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FF18E42293C5F9D0065E5B4 /* HIDDENPhotoViewCell.xib */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -68,6 +70,9 @@
 		4FF18E31293C5B850065E5B4 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-LightItalic.ttf"; path = "../../../Downloads/Roboto/Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
 		4FF18E32293C5B850065E5B4 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "../../../Downloads/Roboto/Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		4FF18E33293C5B850065E5B4 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-BlackItalic.ttf"; path = "../../../Downloads/Roboto/Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
+		4FF18E40293C5F9D0065E5B4 /* HIDDENPhotoViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HIDDENPhotoViewCell.h; sourceTree = "<group>"; };
+		4FF18E41293C5F9D0065E5B4 /* HIDDENPhotoViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HIDDENPhotoViewCell.m; sourceTree = "<group>"; };
+		4FF18E42293C5F9D0065E5B4 /* HIDDENPhotoViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HIDDENPhotoViewCell.xib; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* HiddentagUIimages_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HiddentagUIimages_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -192,6 +197,9 @@
 				4FF18E22293C59FC0065E5B4 /* HIDDENCamerCollectionViewCell.h */,
 				4FF18E23293C59FC0065E5B4 /* HIDDENCamerCollectionViewCell.m */,
 				4FF18E24293C59FC0065E5B4 /* HIDDENCamerCollectionViewCell.xib */,
+				4FF18E40293C5F9D0065E5B4 /* HIDDENPhotoViewCell.h */,
+				4FF18E41293C5F9D0065E5B4 /* HIDDENPhotoViewCell.m */,
+				4FF18E42293C5F9D0065E5B4 /* HIDDENPhotoViewCell.xib */,
 			);
 			name = "Example for HiddentagUIimages";
 			path = HiddentagUIimages;
@@ -342,6 +350,7 @@
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 				4FF18E36293C5BB60065E5B4 /* Roboto-Bold.ttf in Resources */,
 				4FF18E3F293C5BC40065E5B4 /* Roboto-Light.ttf in Resources */,
+				4FF18E44293C5F9D0065E5B4 /* HIDDENPhotoViewCell.xib in Resources */,
 				4FF18E3C293C5BC40065E5B4 /* Roboto-ThinItalic.ttf in Resources */,
 				4FF18E39293C5BC40065E5B4 /* Roboto-Italic.ttf in Resources */,
 				4FF18E3B293C5BC40065E5B4 /* Roboto-Thin.ttf in Resources */,
@@ -431,6 +440,7 @@
 			files = (
 				4FF18E25293C59FC0065E5B4 /* HIDDENCamerCollectionViewCell.m in Sources */,
 				6003F59E195388D20070C39A /* HIDDENAppDelegate.m in Sources */,
+				4FF18E43293C5F9D0065E5B4 /* HIDDENPhotoViewCell.m in Sources */,
 				6003F5A7195388D20070C39A /* HIDDENViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
