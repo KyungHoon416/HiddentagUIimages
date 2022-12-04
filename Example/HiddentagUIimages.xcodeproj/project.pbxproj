@@ -26,6 +26,9 @@
 		4FF18E44293C5F9D0065E5B4 /* HIDDENPhotoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FF18E42293C5F9D0065E5B4 /* HIDDENPhotoViewCell.xib */; };
 		4FF18E47293C6FD00065E5B4 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF18E45293C6FD00065E5B4 /* PhotosUI.framework */; };
 		4FF18E48293C6FD00065E5B4 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF18E46293C6FD00065E5B4 /* Photos.framework */; };
+		4FF18E4B293C9C000065E5B4 /* HIDDENPhotoPickerTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF18E4A293C9C000065E5B4 /* HIDDENPhotoPickerTheme.m */; };
+		4FF18E4F293C9F960065E5B4 /* HIDDENAlbumPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF18E4D293C9F960065E5B4 /* HIDDENAlbumPickerViewController.m */; };
+		4FF18E50293C9F960065E5B4 /* HIDDENAlbumPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FF18E4E293C9F960065E5B4 /* HIDDENAlbumPickerViewController.xib */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -77,6 +80,11 @@
 		4FF18E42293C5F9D0065E5B4 /* HIDDENPhotoViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HIDDENPhotoViewCell.xib; sourceTree = "<group>"; };
 		4FF18E45293C6FD00065E5B4 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		4FF18E46293C6FD00065E5B4 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		4FF18E49293C9C000065E5B4 /* HIDDENPhotoPickerTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HIDDENPhotoPickerTheme.h; sourceTree = "<group>"; };
+		4FF18E4A293C9C000065E5B4 /* HIDDENPhotoPickerTheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HIDDENPhotoPickerTheme.m; sourceTree = "<group>"; };
+		4FF18E4C293C9F960065E5B4 /* HIDDENAlbumPickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HIDDENAlbumPickerViewController.h; sourceTree = "<group>"; };
+		4FF18E4D293C9F960065E5B4 /* HIDDENAlbumPickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HIDDENAlbumPickerViewController.m; sourceTree = "<group>"; };
+		4FF18E4E293C9F960065E5B4 /* HIDDENAlbumPickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HIDDENAlbumPickerViewController.xib; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* HiddentagUIimages_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HiddentagUIimages_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -208,6 +216,11 @@
 				4FF18E40293C5F9D0065E5B4 /* HIDDENPhotoViewCell.h */,
 				4FF18E41293C5F9D0065E5B4 /* HIDDENPhotoViewCell.m */,
 				4FF18E42293C5F9D0065E5B4 /* HIDDENPhotoViewCell.xib */,
+				4FF18E49293C9C000065E5B4 /* HIDDENPhotoPickerTheme.h */,
+				4FF18E4A293C9C000065E5B4 /* HIDDENPhotoPickerTheme.m */,
+				4FF18E4C293C9F960065E5B4 /* HIDDENAlbumPickerViewController.h */,
+				4FF18E4D293C9F960065E5B4 /* HIDDENAlbumPickerViewController.m */,
+				4FF18E4E293C9F960065E5B4 /* HIDDENAlbumPickerViewController.xib */,
 			);
 			name = "Example for HiddentagUIimages";
 			path = HiddentagUIimages;
@@ -351,6 +364,7 @@
 				4FF18E3D293C5BC40065E5B4 /* Roboto-LightItalic.ttf in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				4FF18E26293C59FC0065E5B4 /* HIDDENCamerCollectionViewCell.xib in Resources */,
+				4FF18E50293C9F960065E5B4 /* HIDDENAlbumPickerViewController.xib in Resources */,
 				4FF18E35293C5BB30065E5B4 /* Roboto-BlackItalic.ttf in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				4FF18E3A293C5BC40065E5B4 /* Roboto-Regular.ttf in Resources */,
@@ -450,6 +464,8 @@
 				6003F59E195388D20070C39A /* HIDDENAppDelegate.m in Sources */,
 				4FF18E43293C5F9D0065E5B4 /* HIDDENPhotoViewCell.m in Sources */,
 				6003F5A7195388D20070C39A /* HIDDENViewController.m in Sources */,
+				4FF18E4B293C9C000065E5B4 /* HIDDENPhotoPickerTheme.m in Sources */,
+				4FF18E4F293C9F960065E5B4 /* HIDDENAlbumPickerViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

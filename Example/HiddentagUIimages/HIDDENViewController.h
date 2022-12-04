@@ -6,7 +6,9 @@
 //  Copyright (c) 2022 kimkyunghoon. All rights reserved.
 //
 
+#import <Photos/Photos.h>
 @import UIKit;
+#import "HIDDENPhotoPickerTheme.h"
 
 @protocol HIDDENViewControllerDelegate;
 
@@ -17,6 +19,9 @@
 @property (nonatomic, assign) NSUInteger numberOfPhotoToSelect;
 
 @property (nonatomic, assign) BOOL shouldReturnImageForSingleSelection;
+
+
+@property (nonatomic, readonly) HIDDENPhotoPickerTheme *theme;
 
 @end
 

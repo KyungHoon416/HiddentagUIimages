@@ -10,6 +10,7 @@
 #import <Photos/Photos.h>
 #import "HIDDENCamerCollectionViewCell.h"
 #import "HIDDENPhotoViewCell.h"
+#import "HIDDENPhotoPickerTheme.h"
 
 static NSString * const HIDDENCamerCollectionViewCellNibName = @"HIDDENCamerCollectionViewCell";
 static NSString * const HIDDENPhotoViewCellNibName = @"HIDDENPhotoViewCell";
@@ -20,6 +21,7 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
 
 
 @property (nonatomic, strong) NSDictionary *selectedCollectionItem;
+@property (nonatomic, weak) IBOutlet UIView *navigationBarBackgroundView;
 @property (nonatomic, strong) NSArray *collectionItems;
 @property (weak, nonatomic) IBOutlet UICollectionView *photoCollectionView;
 @property (nonatomic, strong) PHImageManager *imageManager;
@@ -31,8 +33,16 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
 @property (nonatomic, assign) CGSize cellLandscapeSize;
 @property (nonatomic, strong) UIBarButtonItem *doneItem;
 
+
+- (IBAction)presentAlbumPickerView:(id)sender;
+- (IBAction)finishPickingPhotos:(id)sender;
+- (void)updateViewWithCollectionItem:(NSDictionary *)collectionItem;
 - (IBAction)dismiss:(id)sender;
 - (void)setupCellSize;
+- (void)refreshPhotoSelection;
+- (void)fetchCollections;
+- (BOOL)allowsMultipleSelection;
+- (BOOL)canAddPhoto;
 
 @end
 
@@ -67,13 +77,106 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
     [self.photoCollectionView registerNib:cellNib forCellWithReuseIdentifier:HIDDENPhotoViewCellNibName];
     self.photoCollectionView.allowsMultipleSelection = self.allowsMultipleSelection;
     
+    
+    [self fetchCollections];
+    UINavigationItem *navigationItem = [[UINavigationItem alloc] init];
+    navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismiss:)];
+
+    if (self.allowsMultipleSelection) {
+        // Add done button for multiple selections
+        self.doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(finishPickingPhotos:)];
+        self.doneItem.enabled = NO;
+        navigationItem.rightBarButtonItem = self.doneItem;
+    }
+
+    self.navigationItem.leftBarButtonItem = navigationItem.leftBarButtonItem;
+    self.navigationItem.rightBarButtonItem = navigationItem.rightBarButtonItem;
+
+    if (![self.theme.navigationBarBackgroundColor isEqual:[UIColor whiteColor]]) {
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+        [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+        self.navigationBarBackgroundView.backgroundColor = self.theme.navigationBarBackgroundColor;
+    }
+    [self updateViewWithCollectionItem:[self.collectionItems firstObject]];
+
+    self.cellPortraitSize = self.cellLandscapeSize = CGSizeZero;
 	// Do any additional setup after loading the view, typically from a nib.
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[PHPhotoLibrary sharedPhotoLibrary] registerChangeObserver:self];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[PHPhotoLibrary sharedPhotoLibrary] unregisterChangeObserver:self];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)fetchCollections
+{
+    NSMutableArray *allAblums = [NSMutableArray array];
+
+    PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
+
+    __block __weak void (^weakFetchAlbums)(PHFetchResult *collections);
+    void (^fetchAlbums)(PHFetchResult *collections);
+    weakFetchAlbums = fetchAlbums = ^void(PHFetchResult *collections) {
+        // create fecth options
+        PHFetchOptions *options = [PHFetchOptions new];
+        options.predicate = [NSPredicate predicateWithFormat:@"mediaType = %d",PHAssetMediaTypeImage];
+        options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
+
+        for (PHCollection *collection in collections) {
+            if ([collection isKindOfClass:[PHAssetCollection class]]) {
+                PHAssetCollection *assetCollection = (PHAssetCollection *)collection;
+                PHFetchResult *assetsFetchResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:options];
+                if (assetsFetchResult.count > 0) {
+                    [allAblums addObject:@{@"collection": assetCollection
+                                           , @"assets": assetsFetchResult}];
+                }
+            }
+            else if ([collection isKindOfClass:[PHCollectionList class]]) {
+                // If there are more sub-folders, dig into the collection to fetch the albums
+                PHCollectionList *collectionList = (PHCollectionList *)collection;
+                PHFetchResult *fetchResult = [PHCollectionList fetchCollectionsInCollectionList:(PHCollectionList *)collectionList options:nil];
+                weakFetchAlbums(fetchResult);
+            }
+        }
+    };
+
+    PHFetchResult *topLevelUserCollections = [PHCollectionList fetchTopLevelUserCollectionsWithOptions:nil];
+    fetchAlbums(topLevelUserCollections);
+
+    for (PHAssetCollection *collection in smartAlbums) {
+        PHFetchOptions *options = [PHFetchOptions new];
+        options.predicate = [NSPredicate predicateWithFormat:@"mediaType = %d",PHAssetMediaTypeImage];
+        options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
+
+        PHFetchResult *assetsFetchResult = [PHAsset fetchAssetsInAssetCollection:collection options:options];
+        if (assetsFetchResult.count > 0) {
+
+            // put the "all photos" in the first index
+            if (collection.assetCollectionSubtype == PHAssetCollectionSubtypeSmartAlbumUserLibrary) {
+                [allAblums insertObject:@{@"collection": collection
+                                          , @"assets": assetsFetchResult} atIndex:0];
+            }
+            else {
+                [allAblums addObject:@{@"collection": collection
+                                       , @"assets": assetsFetchResult}];
+            }
+        }
+    }
+    self.collectionItems = [allAblums copy];
 }
 
 #pragma mark - Privates
@@ -82,6 +185,46 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
 {
     return (self.numberOfPhotoToSelect != 1);
 }
+
+
+- (void)updateViewWithCollectionItem:(NSDictionary *)collectionItem
+{
+    self.currentCollectionItem = collectionItem;
+    PHCollection *photoCollection = self.currentCollectionItem[@"collection"];
+    
+    UIButton *albumButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    albumButton.tintColor = self.theme.titleLabelTextColor;
+    albumButton.titleLabel.font = self.theme.titleLabelFont;
+    [albumButton addTarget:self action:@selector(presentAlbumPickerView:) forControlEvents:UIControlEventTouchUpInside];
+    [albumButton setTitle:photoCollection.localizedTitle forState:UIControlStateNormal];
+    UIImage *arrowDownImage = [UIImage imageNamed:@"_" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil];
+    arrowDownImage = [arrowDownImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [albumButton setImage:arrowDownImage forState:UIControlStateNormal];
+    [albumButton sizeToFit];
+    albumButton.imageEdgeInsets = UIEdgeInsetsMake(0.0, albumButton.frame.size.width - (arrowDownImage.size.width) + 10, 0.0, 0.0);
+    albumButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, -arrowDownImage.size.width, 0.0, arrowDownImage.size.width + 10);
+    // width + 10 for the space between text and image
+    albumButton.frame = CGRectMake(0.0, 0.0, CGRectGetWidth(albumButton.bounds) + 10, CGRectGetHeight(albumButton.bounds));
+    
+    self.navigationItem.titleView = albumButton;
+
+    [self.photoCollectionView reloadData];
+    [self refreshPhotoSelection];
+}
+
+- (UIImage *)yms_orientationNormalizedImage:(UIImage *)image
+{
+    if (image.imageOrientation == UIImageOrientationUp) return image;
+
+    UIGraphicsBeginImageContextWithOptions(image.size, NO, image.scale);
+    [image drawInRect:CGRectMake(0.0, 0.0, image.size.width, image.size.height)];
+    UIImage *normalizedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return normalizedImage;
+}
+
+
+
 
 #pragma mark - UIImagePickerControllerDelegate
 
@@ -155,6 +298,133 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
 
 
 #pragma mark - PHPhotoLibraryChangeObserver
+
+- (void)photoLibraryDidChange:(PHChange *)changeInstance {
+    // Check if there are changes to the assets we are showing.
+    PHFetchResult *fetchResult = self.currentCollectionItem[@"assets"];
+    
+    PHFetchResultChangeDetails *collectionChanges = [changeInstance changeDetailsForFetchResult:fetchResult];
+    if (collectionChanges == nil) {
+
+        [self fetchCollections];
+
+        if (self.needToSelectFirstPhoto) {
+            self.needToSelectFirstPhoto = NO;
+
+            fetchResult = [self.collectionItems firstObject][@"assets"];
+            PHAsset *asset = [fetchResult firstObject];
+            [self.selectedPhotos addObject:asset];
+            self.doneItem.enabled = YES;
+        }
+
+        return;
+    }
+    
+    /*
+     Change notifications may be made on a background queue. Re-dispatch to the
+     main queue before acting on the change as we'll be updating the UI.
+     */
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Get the new fetch result.
+        PHFetchResult *fetchResult = [collectionChanges fetchResultAfterChanges];
+        NSInteger index = [self.collectionItems indexOfObject:self.currentCollectionItem];
+        self.currentCollectionItem = @{
+                                       @"assets": fetchResult,
+                                       @"collection": self.currentCollectionItem[@"collection"]
+                                       };
+        if (index != NSNotFound) {
+            NSMutableArray *updatedCollectionItems = [self.collectionItems mutableCopy];
+            [updatedCollectionItems replaceObjectAtIndex:index withObject:self.currentCollectionItem];
+            self.collectionItems = [updatedCollectionItems copy];
+        }
+        UICollectionView *collectionView = self.photoCollectionView;
+        
+        if (![collectionChanges hasIncrementalChanges] || [collectionChanges hasMoves]
+            || ([collectionChanges removedIndexes].count > 0
+                && [collectionChanges changedIndexes].count > 0)) {
+            // Reload the collection view if the incremental diffs are not available
+            [collectionView reloadData];
+        }
+        else {
+            /*
+             Tell the collection view to animate insertions and deletions if we
+             have incremental diffs.
+             */
+            [collectionView performBatchUpdates:^{
+                
+                NSIndexSet *removedIndexes = [collectionChanges removedIndexes];
+                NSMutableArray *removeIndexPaths = [NSMutableArray arrayWithCapacity:removedIndexes.count];
+                [removedIndexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+                    [removeIndexPaths addObject:[NSIndexPath indexPathForItem:idx+1 inSection:0]];
+                }];
+                if ([removedIndexes count] > 0) {
+                    [collectionView deleteItemsAtIndexPaths:removeIndexPaths];
+                }
+                
+                NSIndexSet *insertedIndexes = [collectionChanges insertedIndexes];
+                NSMutableArray *insertIndexPaths = [NSMutableArray arrayWithCapacity:insertedIndexes.count];
+                [insertedIndexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+                    [insertIndexPaths addObject:[NSIndexPath indexPathForItem:idx+1 inSection:0]];
+                }];
+                if ([insertedIndexes count] > 0) {
+                    [collectionView insertItemsAtIndexPaths:insertIndexPaths];
+                }
+                
+                NSIndexSet *changedIndexes = [collectionChanges changedIndexes];
+                NSMutableArray *changedIndexPaths = [NSMutableArray arrayWithCapacity:changedIndexes.count];
+                [changedIndexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+                    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:idx inSection:0];
+                    if (![removeIndexPaths containsObject:indexPath]) {
+                        // In case reload selected cell, they were didSelected and re-select. Ignore them to prevent weird transition.
+                        if (self.needToSelectFirstPhoto) {
+                            if (![collectionView.indexPathsForSelectedItems containsObject:indexPath]) {
+                                [changedIndexPaths addObject:indexPath];
+                            }
+                        }
+                        else {
+                            [changedIndexPaths addObject:indexPath];
+                        }
+                    }
+                }];
+                if ([changedIndexes count] > 0) {
+                    [collectionView reloadItemsAtIndexPaths:changedIndexPaths];
+                }
+            } completion:^(BOOL finished) {
+                if (self.needToSelectFirstPhoto) {
+                    self.needToSelectFirstPhoto = NO;
+
+                    PHAsset *asset = [fetchResult firstObject];
+                    [self.selectedPhotos addObject:asset];
+                    self.doneItem.enabled = YES;
+                }
+                [self refreshPhotoSelection];
+            }];
+        }
+    });
+}
+
+- (void)refreshPhotoSelection
+{
+    PHFetchResult *fetchResult = self.currentCollectionItem[@"assets"];
+    NSUInteger selectionNumber = self.selectedPhotos.count;
+
+    for (int i=0; i<fetchResult.count; i++) {
+        PHAsset *asset = [fetchResult objectAtIndex:i];
+        if ([self.selectedPhotos containsObject:asset]) {
+
+            // Display selection
+            [self.photoCollectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:i+1 inSection:0] animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+            HIDDENPhotoViewCell *cell = (HIDDENPhotoViewCell *)[self.photoCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:i+1 inSection:0]];
+            cell.selectionOrder = [self.selectedPhotos indexOfObject:asset]+1;
+
+            selectionNumber--;
+            if (selectionNumber == 0) {
+                break;
+            }
+        }
+    }
+}
+
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
