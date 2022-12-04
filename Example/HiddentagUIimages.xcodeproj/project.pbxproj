@@ -24,6 +24,8 @@
 		4FF18E3F293C5BC40065E5B4 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4FF18E2A293C5B850065E5B4 /* Roboto-Light.ttf */; };
 		4FF18E43293C5F9D0065E5B4 /* HIDDENPhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF18E41293C5F9D0065E5B4 /* HIDDENPhotoViewCell.m */; };
 		4FF18E44293C5F9D0065E5B4 /* HIDDENPhotoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FF18E42293C5F9D0065E5B4 /* HIDDENPhotoViewCell.xib */; };
+		4FF18E47293C6FD00065E5B4 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF18E45293C6FD00065E5B4 /* PhotosUI.framework */; };
+		4FF18E48293C6FD00065E5B4 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF18E46293C6FD00065E5B4 /* Photos.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -73,6 +75,8 @@
 		4FF18E40293C5F9D0065E5B4 /* HIDDENPhotoViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HIDDENPhotoViewCell.h; sourceTree = "<group>"; };
 		4FF18E41293C5F9D0065E5B4 /* HIDDENPhotoViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HIDDENPhotoViewCell.m; sourceTree = "<group>"; };
 		4FF18E42293C5F9D0065E5B4 /* HIDDENPhotoViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HIDDENPhotoViewCell.xib; sourceTree = "<group>"; };
+		4FF18E45293C6FD00065E5B4 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
+		4FF18E46293C6FD00065E5B4 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		6003F58A195388D20070C39A /* HiddentagUIimages_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HiddentagUIimages_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -109,9 +113,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
+				4FF18E47293C6FD00065E5B4 /* PhotosUI.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
 				AAE2323F5BBA6D701A34714B /* Pods_HiddentagUIimages_Example.framework in Frameworks */,
+				4FF18E48293C6FD00065E5B4 /* Photos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +178,8 @@
 		6003F58C195388D20070C39A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4FF18E46293C6FD00065E5B4 /* Photos.framework */,
+				4FF18E45293C6FD00065E5B4 /* PhotosUI.framework */,
 				6003F58D195388D20070C39A /* Foundation.framework */,
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,

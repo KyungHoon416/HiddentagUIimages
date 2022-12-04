@@ -7,11 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-
-NS_ASSUME_NONNULL_BEGIN
+#import <AVFoundation/AVFoundation.h>
+//NS_ASSUME_NONNULL_BEGIN
 
 @interface HIDDENCamerCollectionViewCell : UICollectionViewCell
 
+@property (nonatomic, strong) AVCaptureVideoPreviewLayer *previewLayer;
+@property (nonatomic, weak) IBOutlet UIView *cameraPreviewView;
+@property (nonatomic, strong) AVCaptureSession *session;
+@property (nonatomic, weak) IBOutlet UIView *captureVeilView;
+@property (nonatomic, weak) IBOutlet UIImageView *cameraImageView;
+
 @end
 
-NS_ASSUME_NONNULL_END
+//NS_ASSUME_NONNULL_END

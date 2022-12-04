@@ -7,11 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Photos/Photos.h>
 
-NS_ASSUME_NONNULL_BEGIN
+//NS_ASSUME_NONNULL_BEGIN
 
 @interface HIDDENPhotoViewCell : UICollectionViewCell
+@property (nonatomic, weak) IBOutlet UILabel *selectionOrderLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *imageView;
+@property (nonatomic, weak) IBOutlet UIView *selectionVeil;
+
+@property (nonatomic, weak) PHImageManager *imageManager;
+@property (nonatomic, assign) PHImageRequestID imageRequestID;
+@property (nonatomic, assign) BOOL animateSelection;
 
 @end
 
-NS_ASSUME_NONNULL_END
+//NS_ASSUME_NONNULL_END

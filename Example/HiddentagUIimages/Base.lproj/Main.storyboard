@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -99,7 +98,7 @@
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="czl-74-6uT">
                                 <rect key="frame" x="0.0" y="540" width="390" height="227"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="227" id="erK-2x-ZA9"/>
                                     <constraint firstAttribute="width" constant="390" id="tCa-MZ-On8"/>
@@ -111,6 +110,10 @@
                                     <inset key="sectionInset" minX="7" minY="7" maxX="7" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="whP-gf-Uak" id="G26-VO-3hW"/>
+                                    <outlet property="delegate" destination="whP-gf-Uak" id="a27-CG-lZ2"/>
+                                </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z9o-g9-sA4">
                                 <rect key="frame" x="9" y="780" width="181" height="30"/>
@@ -169,6 +172,9 @@
                             <constraint firstItem="857-7m-dqS" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leading" id="y2y-E9-6hv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="photoCollectionView" destination="czl-74-6uT" id="YBx-pW-TyL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tc2-Qw-aMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -183,8 +189,5 @@
         <image name="Rectangle 309" width="231" height="48"/>
         <image name="_" width="16" height="16"/>
         <image name="비디오" width="30" height="30"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

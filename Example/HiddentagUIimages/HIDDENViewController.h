@@ -8,6 +8,20 @@
 
 @import UIKit;
 
+@protocol HIDDENViewControllerDelegate;
+
 @interface HIDDENViewController : UIViewController
 
+@property (nonatomic, weak) id<HIDDENViewControllerDelegate> delegate;
+
+@property (nonatomic, assign) NSUInteger numberOfPhotoToSelect;
+
+@property (nonatomic, assign) BOOL shouldReturnImageForSingleSelection;
+
+@end
+
+@protocol YMSPhotoPickerViewControllerDelegate <NSObject>
+
+@required
+@optional
 @end
