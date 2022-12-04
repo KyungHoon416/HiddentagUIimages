@@ -1,0 +1,776 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		11C5045BC125C859078914CDA2DBD516 /* Pods-HiddentagUIimages_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = ADB95A8AF9BB180284587BFFAE07943D /* Pods-HiddentagUIimages_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		26EE2B85D5B87F831102DDEAF8EBE2F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		5B7927B7AE1C0067F99E2D8D3A6B4A22 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		7E74DAE714CD0DB498519B0F700594E1 /* Pods-HiddentagUIimages_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2885A28AA501E9757B69C55DD098C4 /* Pods-HiddentagUIimages_Tests-dummy.m */; };
+		85104BCC81B0CB94A2A7462F476677D4 /* Pods-HiddentagUIimages_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A747562E542E403D76CB28BF26DFA836 /* Pods-HiddentagUIimages_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9B33B740A2F21CC8F9BAFD41341F2305 /* HiddentagUIimages-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F3D3CD57A5943345E14B12B8CE37E6 /* HiddentagUIimages-dummy.m */; };
+		CFBD99400039FEC907C7EC5C7A54B5C4 /* HiddentagUIimages-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ADB813E52662DBEA8C678B994CEAE9A /* HiddentagUIimages-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D26FDA80461B1E28D3703362FBDFE4AC /* ReplaceMe.m in Sources */ = {isa = PBXBuildFile; fileRef = 958AF51B88339C0D94A685917DEB5CB1 /* ReplaceMe.m */; };
+		F3FC048BE3B1202007D4D25DEA566E0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		FAA05029BA697D7704D58D9ADE59B442 /* Pods-HiddentagUIimages_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C1AC5CE10B1E1B9AA13D377BA936B5 /* Pods-HiddentagUIimages_Example-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0599E3293BB7866B747F9A03A805E9CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 023C49198C3A5FEB38275950BFCD240D;
+			remoteInfo = "Pods-HiddentagUIimages_Example";
+		};
+		8E36C78F62078D37A2A15830E02E77E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 275BABE79DFB67D876E6CF7474FFD9A8;
+			remoteInfo = HiddentagUIimages;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		043E8C8C7973780BED6FF7CAB5515201 /* Pods-HiddentagUIimages_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HiddentagUIimages_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		04B6D5857FA5325262E52A179669A8E0 /* Pods-HiddentagUIimages_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-HiddentagUIimages_Tests"; path = Pods_HiddentagUIimages_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BC52F70C1AE9F255129FC39BB3D8DC6 /* Pods-HiddentagUIimages_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-HiddentagUIimages_Tests.modulemap"; sourceTree = "<group>"; };
+		13CA2D1A0E9AFE59A88067006BD28F83 /* Pods-HiddentagUIimages_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HiddentagUIimages_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		1AC04FA0FA3DA9B5BE9875C4308A06A7 /* Pods-HiddentagUIimages_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HiddentagUIimages_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		1B446A4A43BDC091BB4CFF13880686A5 /* Pods-HiddentagUIimages_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HiddentagUIimages_Example.release.xcconfig"; sourceTree = "<group>"; };
+		1D980E432DD62D08B91E2601B408A8F1 /* HiddentagUIimages.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = HiddentagUIimages.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		23C1AC5CE10B1E1B9AA13D377BA936B5 /* Pods-HiddentagUIimages_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HiddentagUIimages_Example-dummy.m"; sourceTree = "<group>"; };
+		2859D650050D3C1610D6BB25F5C07F70 /* HiddentagUIimages-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "HiddentagUIimages-Info.plist"; sourceTree = "<group>"; };
+		2BF2CA4D174329CDABA0BE60348F1535 /* Pods-HiddentagUIimages_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HiddentagUIimages_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		2FF59A017E3F900C14A4A0A4DF396556 /* Pods-HiddentagUIimages_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HiddentagUIimages_Tests-Info.plist"; sourceTree = "<group>"; };
+		3ADB813E52662DBEA8C678B994CEAE9A /* HiddentagUIimages-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HiddentagUIimages-umbrella.h"; sourceTree = "<group>"; };
+		4A2885A28AA501E9757B69C55DD098C4 /* Pods-HiddentagUIimages_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HiddentagUIimages_Tests-dummy.m"; sourceTree = "<group>"; };
+		4D8B40808AAC37B21A5A2FFEBE30F110 /* Pods-HiddentagUIimages_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HiddentagUIimages_Example-frameworks.sh"; sourceTree = "<group>"; };
+		512F4382632465A02BE373C75A2813D3 /* Pods-HiddentagUIimages_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HiddentagUIimages_Example-Info.plist"; sourceTree = "<group>"; };
+		5CBCC0673412A56808607217A289E336 /* Pods-HiddentagUIimages_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HiddentagUIimages_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		63CCBE5F1CFA7E21E58702314805C423 /* HiddentagUIimages.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HiddentagUIimages.debug.xcconfig; sourceTree = "<group>"; };
+		658BE32CBDAEB396D476E284C7F466E6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		69A4DC27446133001B135A41FDFCE9E7 /* HiddentagUIimages-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HiddentagUIimages-prefix.pch"; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		77B98CB7949412E39BF9155827B4E405 /* Pods-HiddentagUIimages_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-HiddentagUIimages_Example.modulemap"; sourceTree = "<group>"; };
+		7E5238A7A65C6179D5605547EEA22BE0 /* Pods-HiddentagUIimages_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HiddentagUIimages_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		83C72C3BF751E4A54F4D5C40D65A47CD /* HiddentagUIimages */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = HiddentagUIimages; path = HiddentagUIimages.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8660C0D74B7E5C1FA792FCFD47C0B4D9 /* HiddentagUIimages.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HiddentagUIimages.release.xcconfig; sourceTree = "<group>"; };
+		958AF51B88339C0D94A685917DEB5CB1 /* ReplaceMe.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ReplaceMe.m; path = HiddentagUIimages/Classes/ReplaceMe.m; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A747562E542E403D76CB28BF26DFA836 /* Pods-HiddentagUIimages_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HiddentagUIimages_Example-umbrella.h"; sourceTree = "<group>"; };
+		A7864772DC93B0E63A14710F83B1618D /* Pods-HiddentagUIimages_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HiddentagUIimages_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		ADB95A8AF9BB180284587BFFAE07943D /* Pods-HiddentagUIimages_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HiddentagUIimages_Tests-umbrella.h"; sourceTree = "<group>"; };
+		B8499C3ECD09B133F1D4232C4171FB84 /* Pods-HiddentagUIimages_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-HiddentagUIimages_Example"; path = Pods_HiddentagUIimages_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC92CCBE69FDE72138A8B402528980A5 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		E6F3D3CD57A5943345E14B12B8CE37E6 /* HiddentagUIimages-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HiddentagUIimages-dummy.m"; sourceTree = "<group>"; };
+		E7862CC92116B6E4CABFE9B599F4044F /* HiddentagUIimages.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = HiddentagUIimages.modulemap; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		76C20A21E576D1FC1542A1453F90B372 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3FC048BE3B1202007D4D25DEA566E0F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		815AEA4BC26F3FF2905D379BD270DD83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26EE2B85D5B87F831102DDEAF8EBE2F6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF20CD7E99245C58F05078786697949B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B7927B7AE1C0067F99E2D8D3A6B4A22 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2BDC77045D9BCD27621F6C6692B767AB /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				63AA2A97504A63C822E4545F7210E18A /* HiddentagUIimages */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		3FE9A9F6E06BD18BE618643AEBB61725 /* Pods-HiddentagUIimages_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				0BC52F70C1AE9F255129FC39BB3D8DC6 /* Pods-HiddentagUIimages_Tests.modulemap */,
+				7E5238A7A65C6179D5605547EEA22BE0 /* Pods-HiddentagUIimages_Tests-acknowledgements.markdown */,
+				13CA2D1A0E9AFE59A88067006BD28F83 /* Pods-HiddentagUIimages_Tests-acknowledgements.plist */,
+				4A2885A28AA501E9757B69C55DD098C4 /* Pods-HiddentagUIimages_Tests-dummy.m */,
+				2FF59A017E3F900C14A4A0A4DF396556 /* Pods-HiddentagUIimages_Tests-Info.plist */,
+				ADB95A8AF9BB180284587BFFAE07943D /* Pods-HiddentagUIimages_Tests-umbrella.h */,
+				2BF2CA4D174329CDABA0BE60348F1535 /* Pods-HiddentagUIimages_Tests.debug.xcconfig */,
+				043E8C8C7973780BED6FF7CAB5515201 /* Pods-HiddentagUIimages_Tests.release.xcconfig */,
+			);
+			name = "Pods-HiddentagUIimages_Tests";
+			path = "Target Support Files/Pods-HiddentagUIimages_Tests";
+			sourceTree = "<group>";
+		};
+		48052AFAC5B1D3845869A0B5A80C96AA /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F4619CDD6EDD5E7E103CD89837F46FA6 /* Pods-HiddentagUIimages_Example */,
+				3FE9A9F6E06BD18BE618643AEBB61725 /* Pods-HiddentagUIimages_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		634EA58E45914FE4F69E2755649D075F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E7862CC92116B6E4CABFE9B599F4044F /* HiddentagUIimages.modulemap */,
+				E6F3D3CD57A5943345E14B12B8CE37E6 /* HiddentagUIimages-dummy.m */,
+				2859D650050D3C1610D6BB25F5C07F70 /* HiddentagUIimages-Info.plist */,
+				69A4DC27446133001B135A41FDFCE9E7 /* HiddentagUIimages-prefix.pch */,
+				3ADB813E52662DBEA8C678B994CEAE9A /* HiddentagUIimages-umbrella.h */,
+				63CCBE5F1CFA7E21E58702314805C423 /* HiddentagUIimages.debug.xcconfig */,
+				8660C0D74B7E5C1FA792FCFD47C0B4D9 /* HiddentagUIimages.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/HiddentagUIimages";
+			sourceTree = "<group>";
+		};
+		63AA2A97504A63C822E4545F7210E18A /* HiddentagUIimages */ = {
+			isa = PBXGroup;
+			children = (
+				958AF51B88339C0D94A685917DEB5CB1 /* ReplaceMe.m */,
+				94F40B8E37B915D1C2773A218721BCC7 /* Pod */,
+				634EA58E45914FE4F69E2755649D075F /* Support Files */,
+			);
+			name = HiddentagUIimages;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		8102A7E7F75DADC232BCD3D1A78A4DCC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				83C72C3BF751E4A54F4D5C40D65A47CD /* HiddentagUIimages */,
+				B8499C3ECD09B133F1D4232C4171FB84 /* Pods-HiddentagUIimages_Example */,
+				04B6D5857FA5325262E52A179669A8E0 /* Pods-HiddentagUIimages_Tests */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		94F40B8E37B915D1C2773A218721BCC7 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				1D980E432DD62D08B91E2601B408A8F1 /* HiddentagUIimages.podspec */,
+				658BE32CBDAEB396D476E284C7F466E6 /* LICENSE */,
+				CC92CCBE69FDE72138A8B402528980A5 /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				2BDC77045D9BCD27621F6C6692B767AB /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				8102A7E7F75DADC232BCD3D1A78A4DCC /* Products */,
+				48052AFAC5B1D3845869A0B5A80C96AA /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F4619CDD6EDD5E7E103CD89837F46FA6 /* Pods-HiddentagUIimages_Example */ = {
+			isa = PBXGroup;
+			children = (
+				77B98CB7949412E39BF9155827B4E405 /* Pods-HiddentagUIimages_Example.modulemap */,
+				A7864772DC93B0E63A14710F83B1618D /* Pods-HiddentagUIimages_Example-acknowledgements.markdown */,
+				1AC04FA0FA3DA9B5BE9875C4308A06A7 /* Pods-HiddentagUIimages_Example-acknowledgements.plist */,
+				23C1AC5CE10B1E1B9AA13D377BA936B5 /* Pods-HiddentagUIimages_Example-dummy.m */,
+				4D8B40808AAC37B21A5A2FFEBE30F110 /* Pods-HiddentagUIimages_Example-frameworks.sh */,
+				512F4382632465A02BE373C75A2813D3 /* Pods-HiddentagUIimages_Example-Info.plist */,
+				A747562E542E403D76CB28BF26DFA836 /* Pods-HiddentagUIimages_Example-umbrella.h */,
+				5CBCC0673412A56808607217A289E336 /* Pods-HiddentagUIimages_Example.debug.xcconfig */,
+				1B446A4A43BDC091BB4CFF13880686A5 /* Pods-HiddentagUIimages_Example.release.xcconfig */,
+			);
+			name = "Pods-HiddentagUIimages_Example";
+			path = "Target Support Files/Pods-HiddentagUIimages_Example";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		3139066BFFA3FD82A908E8F4422D9587 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFBD99400039FEC907C7EC5C7A54B5C4 /* HiddentagUIimages-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AA3E170981CDB1AA4F791A2078214D7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11C5045BC125C859078914CDA2DBD516 /* Pods-HiddentagUIimages_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DF13DC67B568A9B5E87DCCCE7949FBD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85104BCC81B0CB94A2A7462F476677D4 /* Pods-HiddentagUIimages_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		023C49198C3A5FEB38275950BFCD240D /* Pods-HiddentagUIimages_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2739D05BE6D8A76DD407776491CA9B49 /* Build configuration list for PBXNativeTarget "Pods-HiddentagUIimages_Example" */;
+			buildPhases = (
+				3DF13DC67B568A9B5E87DCCCE7949FBD /* Headers */,
+				4A450E37371573040DC3B724EA6FC4AA /* Sources */,
+				76C20A21E576D1FC1542A1453F90B372 /* Frameworks */,
+				C8FD95ED53944F3F74490697FA8739A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B2463100DA7F16E60A0FDAB5A5FB62C2 /* PBXTargetDependency */,
+			);
+			name = "Pods-HiddentagUIimages_Example";
+			productName = Pods_HiddentagUIimages_Example;
+			productReference = B8499C3ECD09B133F1D4232C4171FB84 /* Pods-HiddentagUIimages_Example */;
+			productType = "com.apple.product-type.framework";
+		};
+		0C871283125DA9020F064221A8FAE2ED /* Pods-HiddentagUIimages_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6FFE48577C5CEF694FD4F11C158A866 /* Build configuration list for PBXNativeTarget "Pods-HiddentagUIimages_Tests" */;
+			buildPhases = (
+				3AA3E170981CDB1AA4F791A2078214D7 /* Headers */,
+				AF0937BB9EB765EF13C8FCCE5A118368 /* Sources */,
+				815AEA4BC26F3FF2905D379BD270DD83 /* Frameworks */,
+				D8C43A6E5880EA253F9A59D86D6E6480 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				142065E55EB25370B7298F14C3725F8F /* PBXTargetDependency */,
+			);
+			name = "Pods-HiddentagUIimages_Tests";
+			productName = Pods_HiddentagUIimages_Tests;
+			productReference = 04B6D5857FA5325262E52A179669A8E0 /* Pods-HiddentagUIimages_Tests */;
+			productType = "com.apple.product-type.framework";
+		};
+		275BABE79DFB67D876E6CF7474FFD9A8 /* HiddentagUIimages */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 060330E1C020962B4C36FA83FA19EFEE /* Build configuration list for PBXNativeTarget "HiddentagUIimages" */;
+			buildPhases = (
+				3139066BFFA3FD82A908E8F4422D9587 /* Headers */,
+				5D7A45C5DB19A507BFBA8A468A252AA5 /* Sources */,
+				EF20CD7E99245C58F05078786697949B /* Frameworks */,
+				1F7DDF70160B113CA7B3FFEA9E4B2202 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HiddentagUIimages;
+			productName = HiddentagUIimages;
+			productReference = 83C72C3BF751E4A54F4D5C40D65A47CD /* HiddentagUIimages */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 8102A7E7F75DADC232BCD3D1A78A4DCC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				275BABE79DFB67D876E6CF7474FFD9A8 /* HiddentagUIimages */,
+				023C49198C3A5FEB38275950BFCD240D /* Pods-HiddentagUIimages_Example */,
+				0C871283125DA9020F064221A8FAE2ED /* Pods-HiddentagUIimages_Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1F7DDF70160B113CA7B3FFEA9E4B2202 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8FD95ED53944F3F74490697FA8739A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8C43A6E5880EA253F9A59D86D6E6480 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4A450E37371573040DC3B724EA6FC4AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAA05029BA697D7704D58D9ADE59B442 /* Pods-HiddentagUIimages_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D7A45C5DB19A507BFBA8A468A252AA5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B33B740A2F21CC8F9BAFD41341F2305 /* HiddentagUIimages-dummy.m in Sources */,
+				D26FDA80461B1E28D3703362FBDFE4AC /* ReplaceMe.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF0937BB9EB765EF13C8FCCE5A118368 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E74DAE714CD0DB498519B0F700594E1 /* Pods-HiddentagUIimages_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		142065E55EB25370B7298F14C3725F8F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-HiddentagUIimages_Example";
+			target = 023C49198C3A5FEB38275950BFCD240D /* Pods-HiddentagUIimages_Example */;
+			targetProxy = 0599E3293BB7866B747F9A03A805E9CC /* PBXContainerItemProxy */;
+		};
+		B2463100DA7F16E60A0FDAB5A5FB62C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = HiddentagUIimages;
+			target = 275BABE79DFB67D876E6CF7474FFD9A8 /* HiddentagUIimages */;
+			targetProxy = 8E36C78F62078D37A2A15830E02E77E6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2A62FFE8BDFF437DA6CA2088C0483744 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B446A4A43BDC091BB4CFF13880686A5 /* Pods-HiddentagUIimages_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-HiddentagUIimages_Example/Pods-HiddentagUIimages_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HiddentagUIimages_Example/Pods-HiddentagUIimages_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		2EA709CA74A7C019215BE0BD6721E583 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 043E8C8C7973780BED6FF7CAB5515201 /* Pods-HiddentagUIimages_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-HiddentagUIimages_Tests/Pods-HiddentagUIimages_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HiddentagUIimages_Tests/Pods-HiddentagUIimages_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		77BB0F3FBCA39A9DF9200CC29524A1F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8660C0D74B7E5C1FA792FCFD47C0B4D9 /* HiddentagUIimages.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/HiddentagUIimages/HiddentagUIimages-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/HiddentagUIimages/HiddentagUIimages-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/HiddentagUIimages/HiddentagUIimages.modulemap";
+				PRODUCT_MODULE_NAME = HiddentagUIimages;
+				PRODUCT_NAME = HiddentagUIimages;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7EE7A78859F657F6BEFC651185B43192 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		C27274BA4C26C075F7171A7A725A43AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2BF2CA4D174329CDABA0BE60348F1535 /* Pods-HiddentagUIimages_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-HiddentagUIimages_Tests/Pods-HiddentagUIimages_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HiddentagUIimages_Tests/Pods-HiddentagUIimages_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D299434AB35E7FD6F7921C8EF24742FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		D6C3CF05AB0F418F52B7704E5666B52E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CBCC0673412A56808607217A289E336 /* Pods-HiddentagUIimages_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-HiddentagUIimages_Example/Pods-HiddentagUIimages_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HiddentagUIimages_Example/Pods-HiddentagUIimages_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		DB640ACABDE587E891C1A3846891DB87 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63CCBE5F1CFA7E21E58702314805C423 /* HiddentagUIimages.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/HiddentagUIimages/HiddentagUIimages-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/HiddentagUIimages/HiddentagUIimages-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/HiddentagUIimages/HiddentagUIimages.modulemap";
+				PRODUCT_MODULE_NAME = HiddentagUIimages;
+				PRODUCT_NAME = HiddentagUIimages;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		060330E1C020962B4C36FA83FA19EFEE /* Build configuration list for PBXNativeTarget "HiddentagUIimages" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB640ACABDE587E891C1A3846891DB87 /* Debug */,
+				77BB0F3FBCA39A9DF9200CC29524A1F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2739D05BE6D8A76DD407776491CA9B49 /* Build configuration list for PBXNativeTarget "Pods-HiddentagUIimages_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6C3CF05AB0F418F52B7704E5666B52E /* Debug */,
+				2A62FFE8BDFF437DA6CA2088C0483744 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D299434AB35E7FD6F7921C8EF24742FF /* Debug */,
+				7EE7A78859F657F6BEFC651185B43192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C6FFE48577C5CEF694FD4F11C158A866 /* Build configuration list for PBXNativeTarget "Pods-HiddentagUIimages_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C27274BA4C26C075F7171A7A725A43AD /* Debug */,
+				2EA709CA74A7C019215BE0BD6721E583 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

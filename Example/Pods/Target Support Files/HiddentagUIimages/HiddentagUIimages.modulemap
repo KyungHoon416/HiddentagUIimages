@@ -1,0 +1,6 @@
+framework module HiddentagUIimages {
+  umbrella header "HiddentagUIimages-umbrella.h"
+
+  export *
+  module * { export * }
+}

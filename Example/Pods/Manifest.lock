@@ -1,0 +1,16 @@
+PODS:
+  - HiddentagUIimages (0.1.0)
+
+DEPENDENCIES:
+  - HiddentagUIimages (from `../`)
+
+EXTERNAL SOURCES:
+  HiddentagUIimages:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  HiddentagUIimages: 15a0441bf4516b2b937b9ca737798ef4d3af17b0
+
+PODFILE CHECKSUM: efeb298e3e2c4966eb1700a9d92a99e34b320871
+
+COCOAPODS: 1.11.3
