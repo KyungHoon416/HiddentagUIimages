@@ -37,8 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		086908C183F9DFB286D8124F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		4E7CD62E0EF9286F9E68AF3C /* HiddentagUIimages.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = HiddentagUIimages.podspec; path = ../HiddentagUIimages.podspec; sourceTree = "<group>"; };
+		086908C183F9DFB286D8124F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		4E7CD62E0EF9286F9E68AF3C /* HiddentagUIimages.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = HiddentagUIimages.podspec; path = ../HiddentagUIimages.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		6003F58A195388D20070C39A /* HiddentagUIimages_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HiddentagUIimages_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -66,7 +66,7 @@
 		A322879250DC3D29D3764C03 /* Pods-HiddentagUIimages_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HiddentagUIimages_Example.debug.xcconfig"; path = "Target Support Files/Pods-HiddentagUIimages_Example/Pods-HiddentagUIimages_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		D9B423F80514E7387D5C0FCA /* Pods_HiddentagUIimages_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HiddentagUIimages_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA62779EC7B5208EA7D43BE /* Pods-HiddentagUIimages_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HiddentagUIimages_Example.release.xcconfig"; path = "Target Support Files/Pods-HiddentagUIimages_Example/Pods-HiddentagUIimages_Example.release.xcconfig"; sourceTree = "<group>"; };
-		EA45CA69B1FA94D5A419C84B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		EA45CA69B1FA94D5A419C84B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,7 +193,6 @@
 				709E64FE0A52F70979B471DF /* Pods-HiddentagUIimages_Tests.debug.xcconfig */,
 				8BC9DBFDD3D9F5029443D8DC /* Pods-HiddentagUIimages_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -258,6 +257,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -497,10 +497,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HiddentagUIimages/HiddentagUIimages-Prefix.pch";
 				INFOPLIST_FILE = "HiddentagUIimages/HiddentagUIimages-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -513,10 +515,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HiddentagUIimages/HiddentagUIimages-Prefix.pch";
 				INFOPLIST_FILE = "HiddentagUIimages/HiddentagUIimages-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
