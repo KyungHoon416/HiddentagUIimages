@@ -20,8 +20,25 @@
 
 @end
 
-@protocol YMSPhotoPickerViewControllerDelegate <NSObject>
+@protocol HIDDENViewControllerDelegate <NSObject>
 
 @required
+/**
+ * @brief Invoked when view controller finish picking single image from camera or photo album. The picker does not dismiss itself; the client dismisses it in this callback.
+ *
+ * @param picker The view controller invoking the delegate method.
+ * @param image The UIImage object user picked.
+ */
+- (void)photoPickerViewController:(HIDDENViewController *)picker didFinishPickingImage:(UIImage *)image;
+
+
 @optional
+/**
+ * @brief Invoked when user press cancel button. The picker does not dismiss itself; the client dismisses it in this callback.
+ *
+ * @param picker The view controller invoking the delegate method.
+ */
+- (void)photoPickerViewControllerDidCancel:(HIDDENViewController *)picker;
+
+
 @end
