@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'HiddentagUIimages_Example' do
+  pod 'HiddentagUIimages', :path => '../'
+
+  target 'HiddentagUIimages_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
