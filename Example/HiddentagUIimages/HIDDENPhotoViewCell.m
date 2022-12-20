@@ -58,6 +58,7 @@ static const CGFloat HIDDENUnhightedAnimationSpringVelocity = 6.0;
     self.selectionOrderLabel.alpha = 0.0;
     self.Selectimage.alpha = 0.0;
     
+    
 
 }
 

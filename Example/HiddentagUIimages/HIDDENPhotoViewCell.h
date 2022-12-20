@@ -20,6 +20,7 @@
 @property (nonatomic, assign) PHImageRequestID imageRequestID;
 @property (nonatomic, assign) BOOL animateSelection;
 @property (nonatomic, strong) UIImage *thumbnailImage;
+@property (weak, nonatomic) IBOutlet UIImageView *Selectimage;
 
 /**
  * @brief It is the identifier for photo picker to display single photo in current album.
