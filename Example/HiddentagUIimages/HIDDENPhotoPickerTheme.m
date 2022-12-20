@@ -37,14 +37,17 @@
 
 - (void)reset
 {
-    self.tintColor = self.orderTintColor = self.cameraVeilColor = [UIColor systemBlueColor];
-    self.orderLabelTextColor = self.navigationBarBackgroundColor = self.cameraIconColor = [UIColor whiteColor];
+    self.tintColor = self.cameraVeilColor = [UIColor blackColor];
+    self.orderTintColor = [UIColor systemBlueColor];
+    self.orderLabelTextColor = [UIColor whiteColor];
+    self.navigationBarBackgroundColor = self.cameraIconColor = [UIColor whiteColor];
     self.titleLabelTextColor = [UIColor blackColor];
     self.statusBarStyle = UIStatusBarStyleDefault;
     self.titleLabelFont = [UIFont systemFontOfSize:18.0];
     self.albumNameLabelFont = [UIFont systemFontOfSize:18.0 weight:UIFontWeightLight];
     self.photosCountLabelFont = [UIFont systemFontOfSize:18.0 weight:UIFontWeightLight];
     self.selectionOrderLabelFont = [UIFont systemFontOfSize:17.0];
+    
 }
 
 

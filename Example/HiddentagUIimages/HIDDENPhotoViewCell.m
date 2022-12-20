@@ -7,13 +7,17 @@
 //
 
 #import "HIDDENPhotoViewCell.h"
+#import "HIDDENPhotoPickerTheme.h"
+
 static const CGFloat HIDDENHightedAnimationDuration = 0.15;
 static const CGFloat HIDDENUnhightedAnimationDuration = 0.4;
 static const CGFloat HIDDENHightedAnimationTransformScale = 0.9;
 static const CGFloat HIDDENUnhightedAnimationSpringDamping = 0.5;
 static const CGFloat HIDDENUnhightedAnimationSpringVelocity = 6.0;
 
-@interface HIDDENPhotoViewCell()
+@interface HIDDENPhotoViewCell(){
+ 
+}
 
 @property (nonatomic, assign, getter=isAnimatingHighlight) BOOL animateHighlight;
 @property (nonatomic, assign) BOOL enableSelectionIndicatorViewVisibility;
@@ -25,6 +29,20 @@ static const CGFloat HIDDENUnhightedAnimationSpringVelocity = 6.0;
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] init];
+    [self addGestureRecognizer:self.longPressGestureRecognizer];
+    
+    self.selectionOrderLabel.textColor = [HIDDENPhotoPickerTheme sharedInstance].orderLabelTextColor;
+    self.selectionOrderLabel.font = [HIDDENPhotoPickerTheme sharedInstance].selectionOrderLabelFont;
+    
+    
+    self.selectionVeil.layer.borderWidth = 2.0;
+    self.selectionVeil.layer.cornerRadius = 8.0;
+    
+    
+//    self.selectionOrderLabel.backgroundColor = [HIDDENPhotoPickerTheme sharedInstance].orderTintColor;
+    self.selectionVeil.layer.borderColor = [HIDDENPhotoPickerTheme sharedInstance].orderTintColor.CGColor;
+    
     [self prepareForReuse];
 }
 
@@ -38,40 +56,32 @@ static const CGFloat HIDDENUnhightedAnimationSpringVelocity = 6.0;
     self.enableSelectionIndicatorViewVisibility = NO;
     self.selectionVeil.alpha = 0.0;
     self.selectionOrderLabel.alpha = 0.0;
+    self.Selectimage.alpha = 0.0;
+    
+
 }
 
-- (void)cancelImageRequest
-{
-    if (self.imageRequestID != PHInvalidImageRequestID) {
-        [self.imageManager cancelImageRequest:self.imageRequestID];
-        self.imageRequestID = PHInvalidImageRequestID;
-    }
+
+
+- (void)setSelected:(BOOL)selected {
+    [super setSelected:selected];
+
+    [self setSelected:selected animated:self.animateSelection];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+- (void)setSelectionOrder:(NSUInteger)selectionOrder
 {
-    if (!animated) {
-        self.selectionVeil.alpha = selected ? 1.0 : 0.0;
-        self.selectionOrderLabel.alpha = selected ? 1.0 : 0.0;
-        self.enableSelectionIndicatorViewVisibility = selected;
-    }
-    else {
-        self.enableSelectionIndicatorViewVisibility = YES;
-        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-            self.selectionVeil.alpha = selected ? 1.0 : 0.0;
-            self.selectionOrderLabel.alpha = selected ? 1.0 : 0.0;
-        } completion:^(BOOL finished) {
-            self.enableSelectionIndicatorViewVisibility = selected;
-        }];
-    }
-    self.animateSelection = NO;
+    _selectionOrder = selectionOrder;
+    self.selectionOrderLabel.text = [NSString stringWithFormat:@"%zd", selectionOrder];
 }
+
 
 #pragma mark - Publics
 
 - (void)loadPhotoWithManager:(PHImageManager *)manager forAsset:(PHAsset *)asset targetSize:(CGSize)size
 {
     self.imageManager = manager;
+//    self.im
     self.imageRequestID = [self.imageManager requestImageForAsset:asset
                                                        targetSize:size
                                                       contentMode:PHImageContentModeAspectFill
@@ -114,5 +124,36 @@ static const CGFloat HIDDENUnhightedAnimationSpringVelocity = 6.0;
     _thumbnailImage = thumbnailImage;
     self.imageView.image = thumbnailImage;
 }
+
+- (void)cancelImageRequest
+{
+    if (self.imageRequestID != PHInvalidImageRequestID) {
+        [self.imageManager cancelImageRequest:self.imageRequestID];
+        self.imageRequestID = PHInvalidImageRequestID;
+    }
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    if (!animated) {
+        self.selectionVeil.alpha = selected ? 1.0 : 0.0;
+        self.selectionOrderLabel.alpha = selected ? 1.0 : 0.0;
+        self.Selectimage.alpha =  selected ? 1.0 : 0.0;
+        self.enableSelectionIndicatorViewVisibility = selected;
+    }
+    else {
+        self.enableSelectionIndicatorViewVisibility = YES;
+        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+            self.selectionVeil.alpha = selected ? 1.0 : 0.0;
+            self.selectionOrderLabel.alpha = selected ? 1.0 : 0.0;
+            self.Selectimage.alpha =  selected ? 1.0 : 0.0;
+        } completion:^(BOOL finished) {
+            self.enableSelectionIndicatorViewVisibility = selected;
+        }];
+    }
+    self.animateSelection = NO;
+}
+
+
 
 @end

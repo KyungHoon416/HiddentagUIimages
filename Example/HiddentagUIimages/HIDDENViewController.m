@@ -11,13 +11,16 @@
 #import "HIDDENCamerCollectionViewCell.h"
 #import "HIDDENPhotoViewCell.h"
 #import "HIDDENPhotoPickerTheme.h"
+#import <MobileCoreServices/MobileCoreServices.h>
 
 static NSString * const HIDDENCamerCollectionViewCellNibName = @"HIDDENCamerCollectionViewCell";
 static NSString * const HIDDENPhotoViewCellNibName = @"HIDDENPhotoViewCell";
 static const NSUInteger HIDDENNumberOfPhotoColumns = 3;
 static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
 
-@interface HIDDENViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, PHPhotoLibraryChangeObserver>
+@interface HIDDENViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, PHPhotoLibraryChangeObserver,UITableViewDelegate,UITableViewDataSource>{
+    NSArray *myList;
+}
 
 
 @property (nonatomic, strong) NSDictionary *selectedCollectionItem;
@@ -32,7 +35,16 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
 @property (nonatomic, assign) CGSize cellPortraitSize;
 @property (nonatomic, assign) CGSize cellLandscapeSize;
 @property (nonatomic, strong) UIBarButtonItem *doneItem;
+@property (weak, nonatomic) IBOutlet UIButton *Advertising;
+@property (weak, nonatomic) IBOutlet UITableView *categoryTableView;
 
+@property (weak, nonatomic) IBOutlet UIButton *upload_Video;
+- (IBAction)upload_VideoAction:(id)sender;
+
+- (IBAction)categoryAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *categoryBtn;
+
+- (IBAction)presentSinglePhoto:(id)sender;
 
 - (IBAction)presentAlbumPickerView:(id)sender;
 - (IBAction)finishPickingPhotos:(id)sender;
@@ -53,7 +65,7 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
     self = [super initWithNibName:NSStringFromClass(self.class) bundle:[NSBundle bundleForClass:self.class]];
     if (self) {
         self.selectedPhotos = [NSMutableArray array];
-        self.numberOfPhotoToSelect = 1;
+        self.numberOfPhotoToSelect = 0;
         self.shouldReturnImageForSingleSelection = YES;
     }
     return self;
@@ -66,7 +78,10 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
     self.imageManager = [[PHCachingImageManager alloc] init];
     
     self.navigationController.navigationBar.tintColor = self.view.tintColor;
-    
+    self.categoryTableView.hidden = YES;
+    self.categoryTableView.delegate = self;
+    self.categoryTableView.dataSource = self;
+    myList = [[NSArray alloc]initWithObjects:@"Obj-C",@"Swift",@"Python",@"Perl",@"Ruby",@"PHP",@"HTML",@"Switf", nil];
     
     self.photoCollectionView.delegate = self;
     self.photoCollectionView.dataSource = self;
@@ -87,6 +102,7 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
         self.doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(finishPickingPhotos:)];
         self.doneItem.enabled = NO;
         navigationItem.rightBarButtonItem = self.doneItem;
+        
     }
 
     self.navigationItem.leftBarButtonItem = navigationItem.leftBarButtonItem;
@@ -100,7 +116,7 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
     [self updateViewWithCollectionItem:[self.collectionItems firstObject]];
 
     self.cellPortraitSize = self.cellLandscapeSize = CGSizeZero;
-	// Do any additional setup after loading the view, typically from a nib.
+    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -201,10 +217,10 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
     arrowDownImage = [arrowDownImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [albumButton setImage:arrowDownImage forState:UIControlStateNormal];
     [albumButton sizeToFit];
-    albumButton.imageEdgeInsets = UIEdgeInsetsMake(0.0, albumButton.frame.size.width - (arrowDownImage.size.width) + 10, 0.0, 0.0);
-    albumButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, -arrowDownImage.size.width, 0.0, arrowDownImage.size.width + 10);
+    albumButton.imageEdgeInsets = UIEdgeInsetsMake(0.0, albumButton.frame.size.width - (arrowDownImage.size.width) + 100, 0.0, 0.0);
+    albumButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, -arrowDownImage.size.width, 0.0, arrowDownImage.size.width + 100);
     // width + 10 for the space between text and image
-    albumButton.frame = CGRectMake(0.0, 0.0, CGRectGetWidth(albumButton.bounds) + 10, CGRectGetHeight(albumButton.bounds));
+    albumButton.frame = CGRectMake(0.0, 0.0, CGRectGetWidth(albumButton.bounds) + 100, CGRectGetHeight(albumButton.bounds));
     
     self.navigationItem.titleView = albumButton;
 
@@ -327,6 +343,8 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
     dispatch_async(dispatch_get_main_queue(), ^{
         // Get the new fetch result.
         PHFetchResult *fetchResult = [collectionChanges fetchResultAfterChanges];
+        NSLog(@"photoLibraryDidChange collectionItems : %@",self.collectionItems);
+        NSLog(@"photoLibraryDidChange currentCollectionItem : %@",self.currentCollectionItem);
         NSInteger index = [self.collectionItems indexOfObject:self.currentCollectionItem];
         self.currentCollectionItem = @{
                                        @"assets": fetchResult,
@@ -449,7 +467,10 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
     if ([cell isKindOfClass:[HIDDENPhotoViewCell class]]) {
         HIDDENPhotoViewCell *photoCell = (HIDDENPhotoViewCell *)cell;
         [photoCell setNeedsAnimateSelection];
-        photoCell.selectionOrder = self.selectedPhotos.count+1;
+//        photoCell.selectionOrder = self.selectedPhotos.count+1;
+        photoCell.selectionOrder = photoCell.selectionOrder +1;
+        NSLog(@"photoCell.selectionOrder : %lu",(unsigned long)photoCell.selectionOrder);
+        NSLog(@"photoCell.selectedPhotos : %lu",(unsigned long)self.selectedPhotos.count);
     }
     return YES;
 }
@@ -471,7 +492,23 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"didDeselectItemAtIndexPath indexPath.row : %ld",(long)indexPath.row);
     if (indexPath.item == 0) {
+        NSLog(@"indexPath.item == 0");
+        
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        //미디어 타입: 이미지, 영상
+        picker.mediaTypes = [NSArray arrayWithObjects:
+                                      (NSString *) kUTTypeImage,
+                                      (NSString *) kUTTypeMovie,nil];
+//        picker.allowsEditing = YES;
+//        picker.mediaTypes = @"public.movie";
+        //@[(NSString*)kUTTypeMovie, (NSString*)kUTTypeAVIMovie, (NSString*)kUTTypeVideo, (NSString*)kUTTypeMPEG4];
+//            picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModeVideo;
+        [self presentViewController:picker animated:YES completion:nil];
+        
         // Camera cell doesn't need to be deselected
         return;
     }
@@ -524,12 +561,13 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
 {
     // +1 for camera cell
     PHFetchResult *fetchResult = self.currentCollectionItem[@"assets"];
-    
+    NSLog(@"fetchResult : %@",fetchResult);
     return fetchResult.count + 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"indexPath : %ld",(long)indexPath.row);
     if (indexPath.row == 0) {   // Camera Cell
         HIDDENCamerCollectionViewCell *cameraCell = [collectionView dequeueReusableCellWithReuseIdentifier:HIDDENCamerCollectionViewCellNibName forIndexPath:indexPath];
 
@@ -552,9 +590,11 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
     CGFloat scale = [UIScreen mainScreen].scale * HIDDENPhotoFetchScaleResizingRatio;
     CGSize imageSize = CGSizeMake(CGRectGetWidth(photoCell.frame) * scale, CGRectGetHeight(photoCell.frame) * scale);
     
+    NSLog(@"imageSize %@",NSStringFromCGSize(imageSize));
+    
     [photoCell loadPhotoWithManager:self.imageManager forAsset:asset targetSize:imageSize];
 
-    [photoCell.longPressGestureRecognizer addTarget:self action:@selector(presentSinglePhoto:)];
+//    [photoCell.longPressGestureRecognizer addTarget:self action:@selector(presentSinglePhoto:)];
 
     if ([self.selectedPhotos containsObject:asset]) {
         NSUInteger selectionIndex = [self.selectedPhotos indexOfObject:asset];
@@ -564,4 +604,80 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
     return photoCell;
 }
 
+//- (IBAction)presentSinglePhoto:(id)sender
+//{
+//    if ([sender isKindOfClass:[UILongPressGestureRecognizer class]]) {
+//        UILongPressGestureRecognizer *gesture = sender;
+//        if (gesture.state != UIGestureRecognizerStateBegan) {
+//            return;
+//        }
+//        NSIndexPath *indexPath = [self.photoCollectionView indexPathForCell:(HIDDENPhotoViewCell *)gesture.view];
+//
+//        PHFetchResult *fetchResult = self.currentCollectionItem[@"assets"];
+//
+//        PHAsset *asset = fetchResult[indexPath.item-1];
+//
+//        HIDDENViewController *presentedViewController = [[HIDDENViewController alloc] initWithPhotoAsset:asset imageManager:self.imageManager dismissalHandler:^(BOOL selected) {
+//            if (selected && [self collectionView:self.photoCollectionView shouldSelectItemAtIndexPath:indexPath]) {
+//                [self.photoCollectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+//                [self collectionView:self.photoCollectionView didSelectItemAtIndexPath:indexPath];
+//            }
+//        }];
+//
+//        YMSNavigationController *navigationController = [[YMSNavigationController alloc] initWithRootViewController:presentedViewController];
+//
+//        navigationController.view.tintColor = presentedViewController.view.tintColor = self.theme.tintColor;
+//
+//        [self presentViewController:navigationController animated:YES completion:nil];
+//    }
+//}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [myList count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (!cell)
+        cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleDefault reuseIdentifier: CellIdentifier];
+    
+    cell.textLabel.text = [myList objectAtIndex:indexPath.row];
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObject:[myList objectAtIndex:indexPath.row] forKey:@"item"];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:@"selectedListItem"
+         object:self userInfo:dictionary];
+   
+     [self.view removeFromSuperview];
+}
+
+
+- (IBAction)categoryAction:(id)sender {
+    self.categoryTableView.hidden = NO;
+    
+}
+
+- (IBAction)upload_VideoAction:(id)sender {
+    // Present videos from which to choose
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    //미디어 타입: 이미지, 영상
+    picker.mediaTypes = [NSArray arrayWithObjects:
+                                  (NSString *) kUTTypeImage,
+                                  (NSString *) kUTTypeMovie,nil];
+    [self presentViewController:picker animated:YES completion:nil];
+}
 @end
