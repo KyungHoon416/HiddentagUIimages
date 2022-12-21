@@ -18,8 +18,9 @@ static NSString * const HIDDENPhotoViewCellNibName = @"HIDDENPhotoViewCell";
 static const NSUInteger HIDDENNumberOfPhotoColumns = 3;
 static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
 
-@interface HIDDENViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, PHPhotoLibraryChangeObserver,UITableViewDelegate,UITableViewDataSource>{
+@interface HIDDENViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, PHPhotoLibraryChangeObserver,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>{
     NSArray *myList;
+    BOOL tapped;
 }
 
 
@@ -38,7 +39,10 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
 @property (weak, nonatomic) IBOutlet UIButton *Advertising;
 @property (weak, nonatomic) IBOutlet UITableView *categoryTableView;
 @property (weak, nonatomic) IBOutlet UIImageView *ImageShow;
-
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIButton *imageZoomInOut;
+- (IBAction)imageZoomInOutAction:(id)sender;
+//@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapGesture;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *upload_Video;
@@ -78,6 +82,10 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.scrollView.delegate = self;
+    self.scrollView.minimumZoomScale = 1.0f;
+    self.scrollView.maximumZoomScale = 10.0f;
+    self.scrollView.zoomScale = 1.0f;
     self.imageManager = [[PHCachingImageManager alloc] init];
     
     self.navigationController.navigationBar.tintColor = self.view.tintColor;
@@ -635,7 +643,7 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
 //    imageManager
     _imageManager = [[PHImageManager alloc] init];
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
-    options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+    options.deliveryMode = PHImageRequestOptionsDeliveryModeOpportunistic;
     options.networkAccessAllowed = YES;
     options.version = PHImageRequestOptionsVersionOriginal;
     options.resizeMode = PHImageRequestOptionsResizeModeExact;
@@ -659,10 +667,8 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
             
             NSLog(@"사진입니다.");
             self.ImageShow.image = image;
-            //        }else {
-            NSLog(@"동영상입니다.");
-            
-            //        }
+//            self.scrollView.minimumZoomScale = 5.0;
+//            self.ImageShow.min
             
             
             
@@ -670,7 +676,7 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
         }];
     }
     else {
-        
+        NSLog(@"동영상입니다.");
     
     }
 }
@@ -751,4 +757,32 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
                                   (NSString *) kUTTypeMovie,nil];
     [self presentViewController:picker animated:YES completion:nil];
 }
+
+- (IBAction)imageZoomInOutAction:(id)sender {
+    if (!tapped) {
+//            CGPoint tapPoint = [self.tapGesture locationOfTouch:0 inView:self.tapGesture.view];
+//            CGRect zoomRect = [self zoomRectForScrollView:self.scrollView withScale:6.0f withCenter:tapPoint];
+            [self.scrollView setZoomScale:1.0f animated:YES];
+            tapped = YES;
+    } else {
+        [self.scrollView setZoomScale:2.0f animated:YES];
+        tapped = NO;
+    }
+//    self.scrollView.minimumZoomScale = 0.1;
+    
+}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{
+    return _ImageShow;
+}
+
+- (CGRect)zoomRectForScrollView:(UIScrollView *)scrollView withScale:(float)scale withCenter:(CGPoint)center {
+    CGRect zoomRect;
+    zoomRect.size.height = scrollView.frame.size.height / scale;
+    zoomRect.size.width = scrollView.frame.size.width / scale;
+    zoomRect.origin.x = center.x - (zoomRect.size.width / 2.0);
+    zoomRect.origin.y = center.y - (zoomRect.size.height / 2.0);
+    return zoomRect;
+}
+
 @end
