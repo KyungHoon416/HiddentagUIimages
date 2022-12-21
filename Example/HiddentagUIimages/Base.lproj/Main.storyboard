@@ -27,16 +27,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns8-sD-0ua">
-                                <rect key="frame" x="3" y="166" width="390" height="390"/>
+                                <rect key="frame" x="3" y="115" width="390" height="441"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4UH-0E-6uu">
-                                        <rect key="frame" x="18" y="349" width="234" height="29"/>
+                                        <rect key="frame" x="18" y="381" width="234" height="48"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle 309" translatesAutoresizingMaskIntoConstraints="NO" id="Czz-2e-DNB">
-                                                <rect key="frame" x="0.0" y="0.0" width="231" height="29"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="231" height="48"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HoM-VC-KAa">
-                                                <rect key="frame" x="0.0" y="0.0" width="194" height="29"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="194" height="48"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="194" id="JUA-Wv-ugu"/>
                                                 </constraints>
@@ -72,12 +72,12 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OvG-fb-NXC">
-                                        <rect key="frame" x="257" y="349" width="115" height="49"/>
+                                        <rect key="frame" x="257" y="381" width="115" height="49"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="Frame 145"/>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle 308" translatesAutoresizingMaskIntoConstraints="NO" id="857-7m-dqS">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="331"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="363"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="390" placeholder="YES" id="OYG-UD-dhV"/>
@@ -89,7 +89,6 @@
                                     <constraint firstItem="OvG-fb-NXC" firstAttribute="top" secondItem="857-7m-dqS" secondAttribute="bottom" constant="18" id="EJL-DQ-DeV"/>
                                     <constraint firstItem="4UH-0E-6uu" firstAttribute="top" secondItem="857-7m-dqS" secondAttribute="bottom" constant="18" id="IMk-9Q-mUf"/>
                                     <constraint firstAttribute="trailing" secondItem="857-7m-dqS" secondAttribute="trailing" id="KNP-Lw-cAU"/>
-                                    <constraint firstAttribute="width" secondItem="Ns8-sD-0ua" secondAttribute="height" multiplier="1:1" id="MfX-ke-fKF"/>
                                     <constraint firstItem="4UH-0E-6uu" firstAttribute="leading" secondItem="Ns8-sD-0ua" secondAttribute="leading" constant="18" id="Mh5-rI-zWf"/>
                                     <constraint firstItem="857-7m-dqS" firstAttribute="top" secondItem="Ns8-sD-0ua" secondAttribute="top" id="QBC-LH-GDo"/>
                                     <constraint firstItem="857-7m-dqS" firstAttribute="leading" secondItem="Ns8-sD-0ua" secondAttribute="leading" id="Uax-eM-Vmw"/>
@@ -162,7 +161,7 @@
                                 <rect key="frame" x="0.0" y="784" width="390" height="61"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z9o-g9-sA4">
-                                        <rect key="frame" x="16.666666666666671" y="16.666666666666629" width="154" height="31.666666666666671"/>
+                                        <rect key="frame" x="18" y="16.666666666666629" width="151" height="31.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="   Uplode Video" image="비디오"/>
@@ -234,6 +233,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="ImageShow" destination="857-7m-dqS" id="JXz-94-GxZ"/>
                         <outlet property="navigationBarBackgroundView" destination="77H-4q-xri" id="Wv5-Fn-jRJ"/>
                         <outlet property="photoCollectionView" destination="czl-74-6uT" id="YBx-pW-TyL"/>
                         <outlet property="upload_Video" destination="z9o-g9-sA4" id="OWQ-Eq-VxM"/>

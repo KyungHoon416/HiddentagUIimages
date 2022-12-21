@@ -37,6 +37,9 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
 @property (nonatomic, strong) UIBarButtonItem *doneItem;
 @property (weak, nonatomic) IBOutlet UIButton *Advertising;
 @property (weak, nonatomic) IBOutlet UITableView *categoryTableView;
+@property (weak, nonatomic) IBOutlet UIImageView *ImageShow;
+
+
 
 @property (weak, nonatomic) IBOutlet UIButton *upload_Video;
 - (IBAction)upload_VideoAction:(id)sender;
@@ -149,7 +152,7 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
     weakFetchAlbums = fetchAlbums = ^void(PHFetchResult *collections) {
         // create fecth options
         PHFetchOptions *options = [PHFetchOptions new];
-        options.predicate = [NSPredicate predicateWithFormat:@"mediaType = %d",PHAssetMediaTypeImage];
+        options.predicate = [NSPredicate predicateWithFormat:@"mediaType = %d || mediaType = %d",PHAssetMediaTypeImage,PHAssetMediaTypeVideo];
         options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
 
         for (PHCollection *collection in collections) {
@@ -175,7 +178,8 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
 
     for (PHAssetCollection *collection in smartAlbums) {
         PHFetchOptions *options = [PHFetchOptions new];
-        options.predicate = [NSPredicate predicateWithFormat:@"mediaType = %d",PHAssetMediaTypeImage];
+//        options.predicate = [NSPredicate predicateWithFormat:@"mediaType = %d",PHAssetMediaTypeImage];
+        options.predicate = [NSPredicate predicateWithFormat:@"mediaType = %d || mediaType = %d",PHAssetMediaTypeImage,PHAssetMediaTypeVideo];
         options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
 
         PHFetchResult *assetsFetchResult = [PHAsset fetchAssetsInAssetCollection:collection options:options];
@@ -254,6 +258,7 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
         }
 
         UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        
         if (![image isKindOfClass:[UIImage class]]) {
             return;
         }
@@ -465,12 +470,29 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
         return NO;
     }
     if ([cell isKindOfClass:[HIDDENPhotoViewCell class]]) {
+        PHFetchResult *fetchResult = self.currentCollectionItem[@"assets"];
+        
+        PHAsset *asset = fetchResult[indexPath.item-1];
+        
         HIDDENPhotoViewCell *photoCell = (HIDDENPhotoViewCell *)cell;
+        
         [photoCell setNeedsAnimateSelection];
+        
+        CGFloat scale = [UIScreen mainScreen].scale * HIDDENPhotoFetchScaleResizingRatio;
+        CGSize imageSize = CGSizeMake(CGRectGetWidth(photoCell.frame) * scale, CGRectGetHeight(photoCell.frame) * scale);
+        
 //        photoCell.selectionOrder = self.selectedPhotos.count+1;
         photoCell.selectionOrder = photoCell.selectionOrder +1;
+//        [photoCell loadPhotoWithManager:self.imageManager forAsset:asset targetSize:imageSize];
+//        PHAssetResource
+//        self.ImageShow.image = [UIImage imageWithData:asset];
+        
         NSLog(@"photoCell.selectionOrder : %lu",(unsigned long)photoCell.selectionOrder);
+        NSLog(@"photoCell.fetchResult : %@",fetchResult);
+        NSLog(@"photoCell.asset : %@",asset);
         NSLog(@"photoCell.selectedPhotos : %lu",(unsigned long)self.selectedPhotos.count);
+        
+        [self PHAssetToUIImage:asset];
     }
     return YES;
 }
@@ -503,10 +525,6 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
         picker.mediaTypes = [NSArray arrayWithObjects:
                                       (NSString *) kUTTypeImage,
                                       (NSString *) kUTTypeMovie,nil];
-//        picker.allowsEditing = YES;
-//        picker.mediaTypes = @"public.movie";
-        //@[(NSString*)kUTTypeMovie, (NSString*)kUTTypeAVIMovie, (NSString*)kUTTypeVideo, (NSString*)kUTTypeMPEG4];
-//            picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModeVideo;
         [self presentViewController:picker animated:YES completion:nil];
         
         // Camera cell doesn't need to be deselected
@@ -514,14 +532,16 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
     }
     PHFetchResult *fetchResult = self.currentCollectionItem[@"assets"];
     PHAsset *asset = fetchResult[indexPath.item-1];
-
+    
     NSUInteger removedIndex = [self.selectedPhotos indexOfObject:asset];
-
+    
+    
     // Reload order higher than removed cell
     for (NSInteger i=removedIndex+1; i<self.selectedPhotos.count; i++) {
         PHAsset *needReloadAsset = self.selectedPhotos[i];
         HIDDENPhotoViewCell *cell = (HIDDENPhotoViewCell *)[collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:[fetchResult indexOfObject:needReloadAsset]+1 inSection:indexPath.section]];
         cell.selectionOrder = cell.selectionOrder-1;
+//        photoCell.selectionOrder = cell.selectionOrder +1;
     }
 
     [self.selectedPhotos removeObject:asset];
@@ -586,11 +606,15 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
     
     PHAsset *asset = fetchResult[indexPath.item-1];
     photoCell.representedAssetIdentifier = asset.localIdentifier;
-    
+//    photoCell.representedAssetIdentifier = asset.mediaType;
+//    asset.mediaType  = PHAssetMediaTypeUnknown;
     CGFloat scale = [UIScreen mainScreen].scale * HIDDENPhotoFetchScaleResizingRatio;
     CGSize imageSize = CGSizeMake(CGRectGetWidth(photoCell.frame) * scale, CGRectGetHeight(photoCell.frame) * scale);
     
     NSLog(@"imageSize %@",NSStringFromCGSize(imageSize));
+    NSLog(@"collectionView asset %@",asset);
+    NSLog(@"collectionView fetchResult %@",fetchResult);
+
     
     [photoCell loadPhotoWithManager:self.imageManager forAsset:asset targetSize:imageSize];
 
@@ -602,6 +626,53 @@ static const CGFloat HIDDENPhotoFetchScaleResizingRatio = 0.75;
     }
 
     return photoCell;
+}
+
+-(void)PHAssetToUIImage:(PHAsset *)asset{
+    NSLog(@"PHAssetToUIImage asset : %@",asset);
+    
+  
+//    imageManager
+    _imageManager = [[PHImageManager alloc] init];
+    PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+    options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+    options.networkAccessAllowed = YES;
+    options.version = PHImageRequestOptionsVersionOriginal;
+    options.resizeMode = PHImageRequestOptionsResizeModeExact;
+    options.synchronous = YES;
+    
+    NSLog(@"PHAssetToUIImage imageManager : %@",_imageManager);
+    NSLog(@"PHAssetToUIImage options : %@",options);
+    
+  
+    CGSize targetSize = CGSizeMake(CGRectGetWidth(self.ImageShow.bounds), CGRectGetHeight(self.ImageShow.bounds) );
+    NSLog(@"targetSize : %@",NSStringFromCGSize(targetSize));
+    if(asset.mediaType == 1){
+        [_imageManager requestImageForAsset:asset targetSize:targetSize contentMode:PHImageContentModeAspectFill options:options resultHandler:^(UIImage *image, NSDictionary *info) {
+            
+            //        image = [info objectForKey:UIImagePickerControllerOriginalImage];
+            //        NSData *data = UIImagePNGRepresentation(_imageManager);
+            //        NSLog(@"PHAssetToUIImage data : %@",data);
+            NSLog(@"PHAssetToUIImage image : %@",image);
+            NSLog(@"PHAssetToUIImage image.size.width, image.size.height : %.1f,%.1f",image.size.width,image.size.height);
+            
+            
+            NSLog(@"사진입니다.");
+            self.ImageShow.image = image;
+            //        }else {
+            NSLog(@"동영상입니다.");
+            
+            //        }
+            
+            
+            
+            
+        }];
+    }
+    else {
+        
+    
+    }
 }
 
 //- (IBAction)presentSinglePhoto:(id)sender
